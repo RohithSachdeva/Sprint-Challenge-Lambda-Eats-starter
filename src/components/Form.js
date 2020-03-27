@@ -75,8 +75,7 @@ export default function Form(props) {
         const newFormData = {
             ...formState,
             [e.target.name]:
-                e.target.type === "checkbox" ? e.target.checked : e.target.value,
-                
+                e.target.type === "checkbox" ? e.target.checked : e.target.value
         };
         validateChange(e);
         setFormState(newFormData);
