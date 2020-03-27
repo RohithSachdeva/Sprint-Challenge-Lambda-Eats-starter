@@ -1,0 +1,11 @@
+1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+
+1a. Its when you want to match certain data without actually rendering a route.  It includes exact, strict, and sensitive options and can also find matches from other routes in the tree.  
+
+2. How would you explain form validation to someone who has never programmed before?
+
+2a.Form validation is a method to prevent useless information being passed through a form.  If someone needs to input their email but their email doesn't include an @ .. then it would not be useable information.  Form validation is sort of like when you go to the DMV and someone will verify that you brought all the necessary documents with you before you even see the person handling your request.   
+
+3. In 1-2 sentences, define end to end testing. 
+
+3a.  End to end testing is the mimicing of the user experience.  It will focus on testing a User Interface and do things such as clicking certain buttons, submitting forms, and overall how a person interacts with the website/application to verify it works.  
