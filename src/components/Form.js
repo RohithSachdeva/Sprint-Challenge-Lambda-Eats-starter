@@ -4,14 +4,14 @@ import axios from 'axios';
 
 const formSchema = yup.object().shape({
     name: yup.string().min(2, "Name must be atleast 2 characters long").required("Name is required"),
-    whiteSauce: yup.boolean().oneOf([true || false], "whiteSauce"),
-    redSauce: yup.boolean().oneOf([true || false], "redSauce"),
+    whiteSauce: yup.boolean(),
+    redSauce: yup.boolean(),
     pizzaSize: yup.string(),
-    redOnions: yup.boolean().oneOf([true || false], "redOnions"),
-    jalapenos: yup.boolean().oneOf([true || false], "jalapenos"),
-    chicken: yup.boolean().oneOf([true || false], "chicken"),
-    pepperoni: yup.boolean().oneOf([true || false], "pepperoni"),
-    garlic: yup.boolean().oneOf([true || false], "garlic"),
+    redOnions: yup.boolean(),
+    jalapenos: yup.boolean(),
+    chicken: yup.boolean(),
+    pepperoni: yup.boolean(),
+    garlic: yup.boolean(),
     special: yup.string()
 
 });
@@ -19,31 +19,31 @@ const formSchema = yup.object().shape({
 export default function Form(props) {
     const [formState, setFormState] = useState({
         name: "",
-        whiteSauce: true || false,
-        redSauce: true || false,
+        whiteSauce: "",
+        redSauce: "",
         pizzaSize: "",
-        redOnions: true || false,
-        jalapenos: true || false,
-        chicken: true || false,
-        pepperoni: true || false,
-        garlic: true || false,
+        redOnions: "",
+        jalapenos: "",
+        chicken: "",
+        pepperoni: "",
+        garlic: "",
         special: ""
     });
 
     const [errors, setErrors] = useState({
         name: "",
-        whiteSauce: true || false,
-        redSauce: true || false,
+        whiteSauce: "",
+        redSauce: "",
         pizzaSize: "",
-        redOnions: true || false,
-        jalapenos: true || false,
-        chicken: true || false,
-        pepperoni: true || false,
-        garlic: true || false,
+        redOnions: "",
+        jalapenos: "",
+        chicken: "",
+        pepperoni: "",
+        garlic: "",
         special: ""
     });
 
-    const [buttonDisabled, setButtonDisabled] = useState(true || false);
+    const [buttonDisabled, setButtonDisabled] = useState(true);
     const [post, setPost] = useState([]);
 
 
@@ -91,14 +91,14 @@ export default function Form(props) {
                 console.log("success", post);
                 setFormState({
                     name: "",
-                    whiteSauce: true || false,
-                    redSauce: true || false,
+                    whiteSauce: "",
+                    redSauce: "",
                     pizzaSize: "",
-                    redOnions: true || false,
-                    jalapenos: true || false,
-                    chicken: true || false,
-                    pepperoni: true || false,
-                    garlic: true || false,
+                    redOnions: "",
+                    jalapenos: "",
+                    chicken: "",
+                    pepperoni: "",
+                    garlic: "",
                     special: ""
                 });
             })
@@ -117,9 +117,9 @@ export default function Form(props) {
                 <h1 class="bigger"> Sauce: </h1>
                 <label class="bigger">
                     White
-            <input type="radio" name="whiteSauce" onChange={inputChange} />
+            <input type="checkbox" name="whiteSauce" onChange={inputChange} checked={null} />
             Red
-            <input type="radio" name="redSauce" onChange={inputChange} />
+            <input type="checkbox" name="redSauce" onChange={inputChange} checked={null} />
 
                 </label>
                 <div>
@@ -140,7 +140,7 @@ export default function Form(props) {
     <input
                             name="redOnions"
                             type="checkbox"
-                            checked={null}
+                            checked={formState.redOnions}
                             onChange={inputChange} />
                     </label>
                     <label>
@@ -148,7 +148,7 @@ export default function Form(props) {
     <input
                             name="jalapenos"
                             type="checkbox"
-                            checked={null}
+                            checked={formState.jalapenos}
                             onChange={inputChange} />
                     </label>
                     <label>
@@ -156,7 +156,7 @@ export default function Form(props) {
     <input
                             name="chicken"
                             type="checkbox"
-                            checked={null}
+                            checked={formState.chicken}
                             onChange={inputChange} />
                     </label>
                     <label>
@@ -164,7 +164,7 @@ export default function Form(props) {
     <input
                             name="pepperoni"
                             type="checkbox"
-                            checked={null}
+                            checked={formState.pepperoni}
                             onChange={inputChange} />
                     </label>
                     <label>
@@ -173,7 +173,8 @@ export default function Form(props) {
                             name="garlic"
                             type="checkbox"
                             checked={null}
-                            onChange={inputChange} />
+                            onChange={formState.garlic} 
+                            value="yes"/>
                     </label>
                     <label htmlFor="special">
                         <h2>Special Instructions?</h2>
@@ -182,7 +183,7 @@ export default function Form(props) {
                     </label>
                 </div>
 
-                <button disabled={buttonDisabled}>Add to Order</button>
+                <button name="order">Add to Order</button>
             </form>
             <div>
                 <h1>Order Details</h1>
